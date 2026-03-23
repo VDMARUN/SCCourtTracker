@@ -129,7 +129,13 @@ class MainActivity : AppCompatActivity() {
             findViewById<View>(R.id.statusDot).setBackgroundResource(R.drawable.dot_yellow)
         }
 
-        val result = withContext(Dispatchers.IO) { Scraper.fetch() }
+        // Use WebViewScraper (executes JS like browser) first, fallback to Jsoup
+        val webViewScraper = WebViewScraper(this)
+        var result = webViewScraper.fetch()
+        if (result == null || result.courts.isEmpty()) {
+            android.util.Log.d("SCTracker", "WebView failed, trying Jsoup...")
+            result = withContext(Dispatchers.IO) { Scraper.fetch() }
+        }
         val ts = System.currentTimeMillis()
 
         if (result != null) {
