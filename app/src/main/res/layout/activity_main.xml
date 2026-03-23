@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0a1628">
+
+    <!-- Header -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:padding="16dp" android:gravity="center_vertical"
+        android:background="#132035">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="⚖ SC Court Tracker"
+            android:textSize="18sp" android:textStyle="bold" android:textColor="#F0F4FF"/>
+        <View android:id="@+id/statusDot" android:layout_width="10dp" android:layout_height="10dp"
+            android:layout_marginEnd="10dp" android:background="@drawable/dot_yellow"/>
+        <Button android:id="@+id/syncBtn" android:layout_width="wrap_content" android:layout_height="36dp"
+            android:text="↻ Sync" android:textSize="13sp" android:backgroundTint="#1c2f4a"
+            android:textColor="#8ca0c0"/>
+    </LinearLayout>
+
+    <!-- Alert bar -->
+    <LinearLayout android:id="@+id/alertBar" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="#ef4444" android:visibility="gone" android:padding="12dp">
+        <TextView android:id="@+id/tvAlert" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textColor="#fff" android:textStyle="bold" android:textSize="13sp"/>
+    </LinearLayout>
+
+    <!-- Break banner -->
+    <LinearLayout android:id="@+id/breakBanner" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal"
+        android:padding="12dp" android:background="#2d1f00" android:visibility="gone"
+        android:gravity="center_vertical">
+        <TextView android:id="@+id/tvBreakText" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:textColor="#ffc133" android:textSize="12sp" android:textStyle="bold"/>
+        <Button android:id="@+id/resumeBannerBtn" android:layout_width="wrap_content" android:layout_height="32dp"
+            android:text="Resume" android:textSize="12sp" android:backgroundTint="#f0a500" android:textColor="#1a0f00"/>
+    </LinearLayout>
+
+    <!-- Scrollable content -->
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:scrollbars="none">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="14dp" android:paddingBottom="20dp">
+
+            <!-- Empty state -->
+            <TextView android:id="@+id/emptyState" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="⚖\n\nAdd courts below to start tracking"
+                android:textColor="#4d6080" android:textSize="14sp" android:gravity="center"
+                android:padding="32dp" android:visibility="gone"/>
+
+            <!-- Cards container -->
+            <LinearLayout android:id="@+id/cardsContainer" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="12dp"/>
+
+            <!-- Add court box -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp"
+                android:background="@drawable/card_normal" android:layout_marginBottom="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="+ Track a Court" android:textColor="#8ca0c0"
+                    android:textStyle="bold" android:textSize="14sp" android:layout_marginBottom="12dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical">
+                    <Spinner android:id="@+id/courtSpinner" android:layout_width="0dp"
+                        android:layout_height="48dp" android:layout_weight="1.4"
+                        android:backgroundTint="#1c2f4a" android:popupBackground="#132035"/>
+                    <Space android:layout_width="8dp" android:layout_height="1dp"/>
+                    <EditText android:id="@+id/itemInput" android:layout_width="0dp"
+                        android:layout_height="48dp" android:layout_weight="1"
+                        android:hint="Item #" android:inputType="number"
+                        android:background="@drawable/input_bg" android:textColor="#F0F4FF"
+                        android:textColorHint="#4d6080" android:padding="12dp" android:textSize="14sp"/>
+                    <Space android:layout_width="8dp" android:layout_height="1dp"/>
+                    <Button android:id="@+id/addBtn" android:layout_width="wrap_content"
+                        android:layout_height="48dp" android:text="Add"
+                        android:textStyle="bold" android:backgroundTint="#1a6fe8"/>
+                </LinearLayout>
+                <TextView android:id="@+id/tvAddHint" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="Select court + your item number"
+                    android:textColor="#4d6080" android:textSize="11sp" android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <!-- Settings -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp"
+                android:background="@drawable/card_normal" android:layout_marginBottom="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="LUNCH BREAK" android:textColor="#4d6080"
+                    android:textSize="10sp" android:letterSpacing="0.1" android:layout_marginBottom="10dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="8dp">
+                    <Button android:id="@+id/break210Btn" android:layout_width="0dp" android:layout_height="40dp"
+                        android:layout_weight="1" android:text="Till 2:10 PM" android:textSize="11sp"
+                        android:backgroundTint="#2a1e00" android:textColor="#f0a500"/>
+                    <Space android:layout_width="6dp" android:layout_height="1dp"/>
+                    <Button android:id="@+id/break30Btn" android:layout_width="0dp" android:layout_height="40dp"
+                        android:layout_weight="1" android:text="30 min" android:textSize="12sp"
+                        android:backgroundTint="#2a1e00" android:textColor="#f0a500"/>
+                    <Space android:layout_width="6dp" android:layout_height="1dp"/>
+                    <Button android:id="@+id/break60Btn" android:layout_width="0dp" android:layout_height="40dp"
+                        android:layout_weight="1" android:text="1 hour" android:textSize="12sp"
+                        android:backgroundTint="#2a1e00" android:textColor="#f0a500"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="8dp">
+                    <EditText android:id="@+id/customMinsInput" android:layout_width="0dp"
+                        android:layout_height="40dp" android:layout_weight="1" android:hint="Custom mins"
+                        android:inputType="number" android:background="@drawable/input_bg"
+                        android:textColor="#F0F4FF" android:textColorHint="#4d6080" android:padding="10dp" android:textSize="13sp"/>
+                    <Space android:layout_width="8dp" android:layout_height="1dp"/>
+                    <Button android:id="@+id/customBreakBtn" android:layout_width="wrap_content"
+                        android:layout_height="40dp" android:text="Pause" android:textSize="12sp"
+                        android:backgroundTint="#2a1e00" android:textColor="#f0a500"/>
+                </LinearLayout>
+                <Button android:id="@+id/resumeBtn" android:layout_width="match_parent"
+                    android:layout_height="44dp" android:text="▶ Resume Tracking Now"
+                    android:textStyle="bold" android:backgroundTint="#0f2d1a"
+                    android:textColor="#22c55e" android:visibility="gone"/>
+            </LinearLayout>
+
+            <!-- Notifications + Auto sync -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp"
+                android:background="@drawable/card_normal" android:layout_marginBottom="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="STATUS ALERTS" android:textColor="#4d6080"
+                    android:textSize="10sp" android:letterSpacing="0.1" android:layout_marginBottom="10dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
+                    <Spinner android:id="@+id/notifIntervalSpinner" android:layout_width="0dp"
+                        android:layout_height="40dp" android:layout_weight="1"
+                        android:backgroundTint="#1c2f4a" android:popupBackground="#132035"/>
+                    <Space android:layout_width="8dp" android:layout_height="1dp"/>
+                    <Button android:id="@+id/notifToggle" android:layout_width="wrap_content"
+                        android:layout_height="40dp" android:text="Off" android:textSize="13sp"
+                        android:backgroundTint="#1c2f4a" android:textColor="#8ca0c0"/>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="AUTO SYNC" android:textColor="#4d6080"
+                    android:textSize="10sp" android:letterSpacing="0.1" android:layout_marginBottom="10dp"/>
+                <Spinner android:id="@+id/autoIntervalSpinner" android:layout_width="match_parent"
+                    android:layout_height="40dp" android:backgroundTint="#1c2f4a" android:popupBackground="#132035"/>
+            </LinearLayout>
+
+            <TextView android:id="@+id/tvLastSync" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Not synced yet"
+                android:textColor="#4d6080" android:textSize="11sp" android:gravity="center" android:padding="8dp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

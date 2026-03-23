@@ -1,0 +1,2 @@
+-keep class com.sc.courttracker.** { *; }
+-keep class org.jsoup.** { *; }
